@@ -31,3 +31,14 @@ make check_inference
 ```
 
 to check if the model is deployed and outputs a json result.
+
+## Using Microsoft Azure for Machine Learning
+The contents of the project is pushed in Git repository without the ONNX model.
+
+This is because the ML/DL model are usually very large and shouldn't be uploaded in a version control system. Git is not meant to handle versioning of binary files and has the side-effect of creating huge repositories because of this.
+
+The ONNX model is deployed in Microsoft Azure Machine Learning studio.
+
+## Automated container deployment using Github Actions
+Github Actions allows us to create a continuous delivery workflow in a YAML file, that gets triggered when configurable conditions are met. The idea is that whenever the repository has a change in the main branch, the platform will pull the registered model from Azure, create the container, and lastly, it will push it to a container registry.
+
