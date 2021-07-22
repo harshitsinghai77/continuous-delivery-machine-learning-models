@@ -10,7 +10,7 @@ pip install -r requirements.txt
 
 [https://github.com/onnx/models/tree/master/text/machine_comprehension/roberta](https://github.com/onnx/models/tree/master/text/machine_comprehension/roberta)
 
-Got to the repository and download `roberta-sequence-classification-9.onnx` model.
+Go to the ^ repository and download `roberta-sequence-classification-9.onnx` model.
 
 Place the downloaded model inside the /webapp/ dir.
 
