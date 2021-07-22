@@ -1,0 +1,45 @@
+name: Build and package RoBERTa-sequencing to Dockerhub
+
+on:
+  # Triggers the workflow on push or pull request events for the main branch
+  push:
+    branches: [master]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Authenticate with Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+
+      - name: set auto-install of extensions
+        run: az config set extension.use_dynamic_install=yes_without_prompt
+
+      - name: attach workspace
+        run: |
+          az extension add --name azure-cli-ml
+          az ml folder attach --workspace-name "machine-learning-deployment" --resource-group "cloud-shell-storage-centralindia"
+
+      - name: retrieve the model
+        run: az ml model download -t "." --model-id "roberta-sequence:2"
+
+      - name: Authenticate to Docker hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: build flask-app container
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./Dockerfile
+          tags: harshitsinghai77/flask-roberta:latest
+          push: true
