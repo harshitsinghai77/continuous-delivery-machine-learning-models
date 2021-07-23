@@ -18,7 +18,8 @@ Place the downloaded model inside the /webapp/ dir.
 
 `docker build -t deploy/roberta .`
 
-### Run the container locally to interact with it in the same way as when running the application directly with Python. Remember to map the ports of the container to the localhost:
+## Run the container
+Run the container locally to interact with it in the same way as when running the application directly with Python. Remember to map the ports of the container to the localhost:
 
 `docker run -it -p 5000:5000 --rm deploy/roberta`
 
@@ -51,7 +52,7 @@ The ONNX model is uploaded at Azure Machine Learning Studio.
 
 ## Automated container deployment using Github Actions
 
-Github Actions allowsz us to create a continuous delivery workflow in a YAML file, that gets triggered when configurable conditions are met. The idea is that whenever the repository has a change in the main branch, the platform will pull the registered model from Azure, create the container, and lastly, it will push it to a container registry.
+Github Actions allows us to create a continuous delivery workflow in a YAML file, that gets triggered when configurable conditions are met. The idea is that whenever the repository has a change in the main branch, the platform will pull the registered model from Azure, create the container, and lastly, it will push it to a container registry.
 
 ## Use GitHub Actions with Azure Machine Learning
 
@@ -72,7 +73,7 @@ The output is a JSON object with the role assignment credentials that provide ac
 In GitHub, browse your repository, select Settings > Secrets > Add a new secret.
 Paste the entire JSON output from the Azure CLI command into the secret's value field. Give the secret the name AZURE_CREDENTIALS.
 
-## Publish the container to Docker Hub
+## Automatically Publish the container to Docker Hub
 
 Publish the container after it builds. Docker Hub support for Github Actions is straightforward, and all it requires is to create a token and then save it as a Github project secret, along with your Docker Hub username.
 
