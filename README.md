@@ -1,3 +1,7 @@
+## Detailed Explaination
+
+[https://fictionally-irrelevant.vercel.app/posts/continuous-delivery-of-machine-learning-model](https://fictionally-irrelevant.vercel.app/posts/continuous-delivery-of-machine-learning-model)
+
 ## Create .env
 
 ```terminal
@@ -78,3 +82,7 @@ Paste the entire JSON output from the Azure CLI command into the secret's value 
 Publish the container after it builds. Docker Hub support for Github Actions is straightforward, and all it requires is to create a token and then save it as a Github project secret, along with your Docker Hub username.
 
 The container is packaged and distributing the ONNX model in a fully automated fashion by leveraging Github’s CI/CD offering and container registry. In this way, the process is segmented into small steps, and it allows any updates to be done to the container. Finally, the steps publish the container to a selected registry.
+
+## Check the blog post at
+
+[https://fictionally-irrelevant.vercel.app/posts/continuous-delivery-of-machine-learning-model](https://fictionally-irrelevant.vercel.app/posts/continuous-delivery-of-machine-learning-model)
